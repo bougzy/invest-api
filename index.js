@@ -124,6 +124,11 @@ const requireAdmin = (req, res, next) => {
     });
 };
 
+// Default route to handle GET requests to the root URL
+app.get('/', (req, res) => {
+    res.send('Welcome to the API service!');
+});
+
 // Endpoint to get deposit and profit messages for a user
 app.get('/api/user/messages', requireAuth, async (req, res) => {
     try {
