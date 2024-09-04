@@ -74,24 +74,30 @@ const Withdrawal = mongoose.model('Withdrawal', withdrawalSchema);
 
 // Middleware
 app.use(express.json());
-// app.use(cors({
-//     origin: process.env.CLIENT_ORIGIN || 'https://jpmorganfx.vercel.app',
-//     credentials: true
-// }));
 
 app.use(cors({
-    origin: function (origin, callback) {
-      console.log('Request origin:', origin); // Log the origin
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
-    },
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true,
-  }));
+    origin: [
+        process.env.CLIENT_ORIGIN || 'https://jpmorganfx.vercel.app',
+        'https://jpmorganfx.vercel.app/register',
+        'https://jpmorganfx.vercel.app/login'
+    ],
+    credentials: true
+}));
+
+
+// app.use(cors({
+//     origin: function (origin, callback) {
+//       console.log('Request origin:', origin); // Log the origin
+//       if (!origin || allowedOrigins.includes(origin)) {
+//         callback(null, true);
+//       } else {
+//         callback(new Error('Not allowed by CORS'));
+//       }
+//     },
+//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//     allowedHeaders: ['Content-Type', 'Authorization'],
+//     credentials: true,
+//   }));
 
 // Helper functions
 const generateReferralCode = () => {
