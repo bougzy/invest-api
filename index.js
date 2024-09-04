@@ -79,7 +79,8 @@ app.use(cors({
     origin: [
         process.env.CLIENT_ORIGIN || 'https://jpmorganfx.vercel.app',
         'https://jpmorganfx.vercel.app/register',
-        'https://jpmorganfx.vercel.app/login'
+        'https://jpmorganfx.vercel.app/login',
+        'https://jpmorganfx.vercel.app/admin'
     ],
     credentials: true
 }));
